@@ -5,7 +5,7 @@
 // - upload kodenya ke gitub dan kirim ke chat pribadi trainer
 // - max pengerjaan besok siang
 
-const { Builder, Browser, By } = require("selenium-webdriver");
+const { Builder, Browser, By, until } = require("selenium-webdriver");
 
 const latihan = async () => {
   const driver = await new Builder().forBrowser(Browser.CHROME).build();
@@ -16,7 +16,10 @@ const latihan = async () => {
   await driver.findElement(By.id("password")).sendKeys("secret_sauce");
   await driver.findElement(By.id("login-button")).click();
 
-  //add cart
+  //sort-add cart-remove cart
+  await driver
+    .findElement(By.css(".product_sort_container option[value='lohi']"))
+    .click();
   await driver
     .findElement(By.css(".inventory_item:nth-child(1) .btn_primary"))
     .click();
@@ -25,6 +28,9 @@ const latihan = async () => {
     .click();
   await driver
     .findElement(By.css(".inventory_item:last-child .btn_primary"))
+    .click();
+  await driver
+    .findElement(By.css(".inventory_item:last-child .btn_secondary"))
     .click();
   await driver.findElement(By.css("#shopping_cart_container")).click();
   await driver.findElement(By.css(".btn_action")).click();
@@ -39,12 +45,13 @@ const latihan = async () => {
   await driver.findElement(By.css(".cart_button")).click();
   //out system
   await driver.findElement(By.css(".bm-burger-button")).click();
-  await driver.findElement(By.css("#logout_sidebar_link")).click();
+
+  // const logout = await driver.findElement(By.id("logout_sidebar_link"));
+  // await logout.click();
+  // await driver.wait(until.elementIsVisible(logout), 5000);
   await new Promise((done) => setTimeout(done, 2000));
+  await driver.findElement(By.css("#logout_sidebar_link")).click();
   await driver.close();
 };
 
 latihan();
-// const text = await driver
-//     .findElement(By.css(".inventory_item_desc"))
-//     .getText();
