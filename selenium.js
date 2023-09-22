@@ -44,11 +44,11 @@ const latihan = async () => {
   await driver.findElement(By.css(".cart_button")).click();
   await driver.findElement(By.css(".cart_button")).click();
   //out system
-  await driver.findElement(By.css(".bm-burger-button")).click();
 
+  await driver.findElement(By.css(".bm-burger-button")).click();
   // const logout = await driver.findElement(By.id("logout_sidebar_link"));
-  // await logout.click();
   // await driver.wait(until.elementIsVisible(logout), 5000);
+  // await logout.click();
   await new Promise((done) => setTimeout(done, 2000));
   await driver.findElement(By.css("#logout_sidebar_link")).click();
   await driver.close();
