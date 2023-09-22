@@ -35,8 +35,8 @@ describe("positif case", () => {
       await loginPage.endpointPage();
       await loginPage.loginProcess("locked_out_user", "secret_sauce");
       //login
-      // const productText = await loginPage.findTextProduct();
-      // expect(productText).include("Product");
+      const productText = await loginPage.findTextProduct();
+      expect(productText).include("Product");
     });
   });
   describe("percobaan login benar dengan username standard_user dan password secret_sauce sehingga menampilkan title product", () => {
