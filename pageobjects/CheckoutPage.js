@@ -12,14 +12,15 @@ class CheckoutPage extends Page {
   postal = By.id("postal-code");
   btnContinue = By.className("btn_primary");
   succesCheckout = By.className("subheader");
+  errCO = By.css('[data-test="error"]');
 
   async endpointPage() {
     await this.openUrl("/checkout-step-one.html");
   }
-  async fillData() {
-    await this.driver.findElement(this.firstName).sendKeys("Dede");
-    await this.driver.findElement(this.lastName).sendKeys("Inoen");
-    await this.driver.findElement(this.postal).sendKeys("11340");
+  async fillData(firstName, lastName, postal) {
+    await this.driver.findElement(this.firstName).sendKeys(firstName);
+    await this.driver.findElement(this.lastName).sendKeys(lastName);
+    await this.driver.findElement(this.postal).sendKeys(postal);
   }
 
   async succesFillData() {
@@ -27,6 +28,10 @@ class CheckoutPage extends Page {
   }
   async clickContinue() {
     await this.driver.findElement(this.btnContinue).click();
+  }
+
+  async errorCheckout() {
+    return await this.driver.findElement(this.errCO).getText();
   }
 }
 
