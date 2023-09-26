@@ -1,6 +1,7 @@
 const { By } = require("selenium-webdriver");
 const Page = require("./Page");
 
+//extends for inheritance
 class CheckoutTwoPage extends Page {
   // initialization
   constructor(driver) {

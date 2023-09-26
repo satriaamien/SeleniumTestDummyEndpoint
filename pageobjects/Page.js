@@ -8,5 +8,9 @@ class Page {
   async openUrl(path) {
     await this.driver.get("https://www.saucedemo.com/v1" + path);
   }
+
+  async prosigmaUrl(path) {
+    await this.driver.get("https://prosigmaka.com" + path);
+  }
 }
 module.exports = Page;
